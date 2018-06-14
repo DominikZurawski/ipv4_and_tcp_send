@@ -27,14 +27,15 @@ Wymagania:
 1. W programie należy wykorzystać wskaźniki na funkcje.
 2. Historia prowadzenia i dokumentacja projektu powinna znajdować się na plataformie github.com (lub innej obsługującej system kontroli wersji git).
 ########################################################################################
-Uruchomienie:\n  
-Aby uruchomić program należy przejść do folderu
-ipv4_and_tcp_send/main_program/Debug/   \n 
 
-następnie z konsoli systemowej wywołać program:\n  
+Uruchomienie:  
+Aby uruchomić program należy przejść do folderu
+ipv4_and_tcp_send/main_program/Debug/      
+
+następnie z konsoli systemowej wywołać program:    
 sudo ./main_program [count packet] [count protocol: 0 ipv4 or 1 tcp]
 
-Uwagi:\n
+Uwagi:  
 Należy zmienić ścieżkę do bibliotek dynamicznych na własne.
 
 
