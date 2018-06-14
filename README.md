@@ -26,7 +26,7 @@ f) IPv6 + UDP
 Wymagania:
 1. W programie należy wykorzystać wskaźniki na funkcje.
 2. Historia prowadzenia i dokumentacja projektu powinna znajdować się na plataformie github.com (lub innej obsługującej system kontroli wersji git).
-######################################################################################################################
+################################################################################################
 Uruchomienie:
 Aby uruchomić program należy przejść do folderu
 ipv4_and_tcp_send/main_program/Debug/
