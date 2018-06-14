@@ -1,0 +1,19 @@
+-include ../makefile.init
+
+RM := rm -rf
+
+# All of the sources participating in the build are defined here
+-include objects.mk
+
+ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+endif
+
+-include ../makefile.defs
+main_program: main_program.c project.c
+	gcc -g -Ldl -o main_program main_program.c project.c
+
+clean: 
+	$(RM) main_program

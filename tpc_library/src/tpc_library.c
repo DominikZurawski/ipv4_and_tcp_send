@@ -17,6 +17,8 @@
 #include "tpc_library.h"
 
 void tcp_rfc(unsigned char *datagram){//unsigned short iph,char size_ipv4, funkcja) {
+	char input [32];
+
 
 	struct pseudo_header *psh = malloc ( sizeof (struct pseudo_header)); //RFC 793
 	char *pseudogram;
@@ -32,7 +34,7 @@ void tcp_rfc(unsigned char *datagram){//unsigned short iph,char size_ipv4, funkc
 
 	strcpy (data, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	iph->tot_len = sizeof(struct iphdr) + sizeof (struct nagl_tcp) + strlen(data);
-	puts("ok");
+
 	//TCP Header
 	   tcph->Source_port = htons (1234);
 	    tcph->Destination_port = htons (7889);
@@ -50,6 +52,29 @@ void tcp_rfc(unsigned char *datagram){//unsigned short iph,char size_ipv4, funkc
 	    tcph->Checksum = 0; //leave checksum 0 now, filled later by pseudo header
 	    tcph->Urgent_pointer = 0;	//only search if URG is set, tell about value a packet
 
+	    int odpowiedz;
+	    	printf ("Czy chcesz zmienić wartości domyslne protokolu TCP,0-nie/1-tak?\n");
+
+	    	fgets (input, 32, stdin);
+	    if(atoi(input) == 1){
+
+	    	    	 printf ("\nTCP source_port: (1234) ");
+	    	    	        fgets (input, 32, stdin);
+	    	    	                if (atoi(input)== 0){
+	    	    	                	printf(" ");
+	    	    	                }
+	    	    	                else{
+	    	    	                	tcph->Source_port = htons (atoi (input));
+	    	    	                }
+	    	    	 printf ("\nTCP dest_port: (7889) ");
+	    	    	        fgets (input, 32, stdin);
+	    	    	                if (atoi(input)== 0)
+	    	    	                	printf(" ");
+	    	    	                else{
+	    	    	                	tcph->Destination_port = htons (atoi (input));
+	    	    	                }
+	    	    }
+
 	        psh->source_address = iph->saddr;//source; //od nagłowka ipv4
 	        psh->dest_address = iph->daddr;//sin.sin_addr.s_addr;//destination;		//od nagłowka ipv4
 	        psh->zero = 0;
@@ -63,5 +88,6 @@ void tcp_rfc(unsigned char *datagram){//unsigned short iph,char size_ipv4, funkc
 	        memcpy(pseudogram + sizeof(struct pseudo_header) , tcph , sizeof(struct nagl_tcp) + strlen(data));//dl_data(size_ipv4));//strlen(data));
 
 	        tcph->Checksum = csum( (unsigned short*) pseudogram , psize);
+
 
 }

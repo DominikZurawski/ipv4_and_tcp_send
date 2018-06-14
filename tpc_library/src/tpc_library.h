@@ -9,12 +9,8 @@
 #define TPC_LIBRARY_H_
 
 unsigned short csum(unsigned short *ptr,int nbytes);
-//char size_tcp(void);
+
 void tcp_rfc(unsigned char * datagram);//unsigned short iph,char size_ipv4);
-//unsigned short dl_data(char size_ipv4);
-//char *pseudogram, datagram[4096],source_ip[32];
-
-
 
 struct nagl_tcp {
 	unsigned short Source_port;
@@ -75,7 +71,5 @@ unsigned short csum(unsigned short *ptr,int nbytes)
 
     return(answer);
 }
-
-
 
 #endif /* TPC_LIBRARY_H_ */

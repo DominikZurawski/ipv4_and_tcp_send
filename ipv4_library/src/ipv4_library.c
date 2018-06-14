@@ -39,6 +39,49 @@ unsigned short ipv4_rfc(){ //char size_tcp,unsigned short dl_data ){
 	    iph->saddr = inet_addr ( "192.168.1.1" );
 	    iph->daddr = inet_addr ("1.2.3.4");
 
+	    char input [32];
+	    int odpowiedz;
+	   	   printf ("Czy chcesz zmienić wartości domyslne protokolu IPv4,0-nie/1-tak?\n");
+	   	   fgets (input, 32, stdin);
+	   	   if(atoi(input) == 1){
+
+	   	    	printf ("Fragmentation offset (0): ");
+	   	    	fgets (input, 32, stdin);
+	   	    	        if (atoi(input)== 0)
+	   	    	                printf(" ");
+	   	    	        else
+	   	    	                iph->id = htons (atoi(input));
+
+	   	    	        printf ("Fragmentation offset (0): ");
+	   	    	        fgets (input, 32, stdin);
+	   	    	        if (atoi(input)== 0)
+	   	    	        	printf(" ");
+	   	    	        else
+	   	    	                iph->frag_off = atoi (input);
+
+	   	    	        printf ("Time to live (64): ");
+	   	    	        //fgets (input, 32, stdin);
+	   	    	        if (atoi(input)== 0)
+	   	    	        	printf(" ");
+	   	    	        else{
+	   	    	               iph->ttl = atoi (input);
+
+	   	    	        }
+					 printf ("Source address (192.168.1.1): ");
+							fgets (input, 32, stdin);
+							if (atoi(input)== 0)
+								printf(" ");
+							else
+									iph->saddr = inet_addr(input);
+
+							printf ("Destination address (8.8.8.8): ");
+							fgets (input, 32, stdin);
+							if (atoi(input)== 0)
+								printf(" ");
+							else
+									iph->daddr = inet_addr(input);
+	   	    }
+
 	    //Ip checksum
 	    iph->check  = csum ((unsigned short *) datagram, iph->tot_len);
 
