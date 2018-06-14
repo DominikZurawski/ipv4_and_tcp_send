@@ -30,7 +30,9 @@ Wymagania:
 Uruchomienie:
 Aby uruchomić program należy przejść do folderu
 ipv4_and_tcp_send/main_program/Debug/
+
 następnie z konsoli systemowej wywołać program:
+
 sudo ./main_program [count packet] [count protocol: 0 ipv4 or 1 tcp]
 
 Uwagi:
